@@ -1,0 +1,39 @@
+<div class="portfolio-container">
+  <h2>💼 Mon Portfolio</h2>
+  <p *ngIf="projects.length === 0" class="error-message">❌ Aucun projet trouvé</p>
+
+  <p-carousel
+    [value]="projects"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="8000"
+    [attr.aria-hidden]="false">
+
+    <ng-template pTemplate="item" let-project>
+      <div class="project-card">
+        <div class="project-content">
+          <!-- Colonne gauche : Image -->
+          <div class="project-image-container">
+            <img [src]="project.image" alt="{{ project.title }}" class="project-image">
+          </div>
+
+          <!-- Colonne droite : Détails -->
+          <div class="project-details">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <p><strong>Technologies :</strong></p>
+            <div class="project-tags">
+              <p-tag *ngFor="let tech of project.technologies" severity="info">{{ tech }}</p-tag>
+            </div>
+            <div class="project-footer">
+              <a [href]="project.link" target="_blank">
+                <p-button label="🔗 Voir le projet" icon="pi pi-external-link" severity="success"></p-button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
