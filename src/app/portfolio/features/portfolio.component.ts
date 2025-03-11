@@ -18,23 +18,23 @@ import { Project } from "../../about/data-access/project.model";
 export class PortfolioComponent implements OnInit {
   private readonly projectsService = inject(ProjectsService);
   public projects: Project[] = [];
+  public selectedIndex: number = 0;
 
-  selectedIndex = 0;
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.projectsService.get().subscribe((projects) => {
-        this.projects = projects;
-    });
-
     this.route.paramMap.subscribe(params => {
       const projectId = Number(params.get('id'));
-      const projectIndex = this.projects.findIndex(p => p.id === projectId);
 
-      if (projectIndex !== -1) {
-         this.selectedIndex = projectIndex;
-      }
-      setTimeout(() => window.scrollTo({ top: 300, behavior: 'smooth' }), 200); // Scroller vers le carrousel
+      this.projectsService.get().subscribe((projects) => {
+        this.projects = projects;
+
+        const projectIndex = this.projects.findIndex(p => p.id === projectId);
+        if (projectIndex !== -1) {
+          this.selectedIndex = projectIndex;
+        }
+        setTimeout(() => window.scrollTo({ top: 300, behavior: 'smooth' }), 300);
+      });
     });
   }
 }

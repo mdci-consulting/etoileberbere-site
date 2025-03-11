@@ -43,7 +43,7 @@ jobs:
         run: npm ci
 
       - name: 🏗️ Construire l'Application
-        run: npm run build -- --configuration=production
+        run: npm run build -- --configuration=production --base-href /
 
       - name: 🚀 Déploiement sur GitHub Pages
         if: success()
@@ -52,3 +52,4 @@ jobs:
           branch: gh-pages
           folder: dist/etoileberbere-site/browser
           clean: true
+

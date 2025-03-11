@@ -5,7 +5,7 @@
     "description": "Application frontend moderne pour la gestion des produits, développée avec Angular et Material. Offre une expérience fluide et intuitive, avec intégration en temps réel via WebSocket.",
     "technologies": ["Angular", "Material" ,"WebSocket", "Authentification avec JWT", "cypress", "karma-jasmine", "CI/CD"],
     "link": "https://github.com/mdci-projets/gestion-produits-angular",
-    "image": "assets/portfolio/angular_jwt.jpg"
+    "image": "assets/portfolio/angular_jwt_1.jpg"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "description": "Projet Terraform automatise le déploiement d'une instance EC2 sur AWS avec Nginx en tant que reverse proxy, Let's Encrypt pour le SSL et Docker pour exécuter une application.",
     "technologies": ["Terraform", "AWS", "Docker", "Nginx", "Certbot (Let's Encrypt)"],
     "link": "https://github.com/mdci-projets/terraform-nginx-ssl.git",
-    "image": "assets/portfolio/AWS_EC2_deployment.jpg"
+    "image": "assets/portfolio/AWS_EC2_deployment_1.jpg"
   },
   {
     "id": 3,
@@ -21,6 +21,6 @@
     "description": "Backend robuste pour la gestion des produits d'une plateforme e-commerce, intégrant Spring Boot, Spring Security et WebSocket pour une expérience fluide et sécurisée.",
     "technologies": ["Spring Boot", "Spring Security", "JWT", "Spring Data Jpa", "Spring Web", "API REST", "Swagger", "H2", "Docker", "WebSocket", "JUnit", "CI/CD"],
     "link": "https://github.com/mdci-projets/gestion-produits-backend",
-    "image": "assets/portfolio/spring_boot_app.jpg"
+    "image": "assets/portfolio/spring_boot_app_1.jpg"
   }
 ]
