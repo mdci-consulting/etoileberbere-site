@@ -43,9 +43,9 @@ yearsOfExperience = new Date().getFullYear() - 2018;
   ];
 
   skills: string[] = [
-    'Java', 'Spring Boot', 'Spring Security', 'Spring Data JPA', 'Hibernate',
-    'Angular', 'RxJS', 'Docker', 'CI/CD', 'DevOps', 'AWS', 'Terraform',
-    'WebSocket', 'Clean Code', 'Architecture Hexagonale', 'DDD', 'TDD', 'Cypress'
+    'Java', 'JEE', 'Spring Boot', 'Spring Security', 'Spring Data JPA', 'Spring Web', 'API REST','Hibernate', 'Postgres',
+    'JUnit', 'Cucumber', 'Angular', 'RxJS', 'Docker', 'CI/CD', 'DevOps', 'AWS', 'Terraform', 'WebSocket', 'Clean Code',
+    'Architecture Hexagonale', 'DDD', 'TDD', 'Jasmine', 'Cypress'
   ];
 
   public projects: Project[] = [];
