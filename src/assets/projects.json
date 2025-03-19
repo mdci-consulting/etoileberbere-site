@@ -1,6 +1,15 @@
 [
   {
     "id": 1,
+    "title": "Gestion de Comptes Bancaires - Architecture Hexagonale, DDD et TDD",
+    "description": "Ce projet implémente une application de gestion de comptes bancaires en suivant l'architecture hexagonale, Domain-Driven Design (DDD) et Test driven development (TDD). ",
+    "descriptionDetails": ["Création et gestion de comptes", "Dépôt et retrait d'argent" ,"Historique des transactions", "Génération de relevés bancaires", "API REST pour interagir avec le système", "Documentation Swagger pour tester l'API", "Interface en ligne de commande (CLI) pour exécuter des opérations bancaires"],
+    "technologies": ["Java 17", "Spring Boot" ,"Spring Data JPA", "H2 Database", "JUnit 5 & Mockito", "Maven", "Swagger (Documentation API)", "CLI avec CommandLineRunner"],
+    "link": "https://github.com/mdci-projets/bank-account.git",
+    "image": "assets/portfolio/hexagonal_architecture.jpg"
+  },
+  {
+    "id": 2,
     "title": "Interface Angular pour la gestion des produits",
     "description": "Application frontend moderne pour la gestion des produits, développée avec Angular et Material. Offre une expérience fluide et intuitive, avec intégration en temps réel via WebSocket.",
     "technologies": ["Angular", "Material" ,"WebSocket", "Authentification avec JWT", "cypress", "karma-jasmine", "CI/CD"],
@@ -8,7 +17,7 @@
     "image": "assets/portfolio/angular_jwt_1.jpg"
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "Déploiement d'une Instance EC2 d'AWS avec Nginx, Certbot et Docker",
     "description": "Projet Terraform automatise le déploiement d'une instance EC2 sur AWS avec Nginx en tant que reverse proxy, Let's Encrypt pour le SSL et Docker pour exécuter une application.",
     "technologies": ["Terraform", "AWS", "Docker", "Nginx", "Certbot (Let's Encrypt)"],
@@ -16,7 +25,7 @@
     "image": "assets/portfolio/AWS_EC2_deployment_1.jpg"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Backend Spring Boot pour la gestion des produits",
     "description": "Backend robuste pour la gestion des produits d'une plateforme e-commerce, intégrant Spring Boot, Spring Security et WebSocket pour une expérience fluide et sécurisée.",
     "technologies": ["Spring Boot", "Spring Security", "JWT", "Spring Data Jpa", "Spring Web", "API REST", "Swagger", "H2", "Docker", "WebSocket", "JUnit", "CI/CD"],
