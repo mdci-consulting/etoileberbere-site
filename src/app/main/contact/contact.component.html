@@ -1,12 +1,12 @@
-<div class="form-container px-3 py-4">
+<div class="form-container px-3 py-2">
 
   <div class="text-center mb-5">
     <h2 class="text-3xl font-bold">📬 Contactez-moi</h2>
-    <p class="text-gray-600">N'hésitez pas à m’écrire, je réponds rapidement !</p>
+    <p class="text-content mb-2">N'hésitez pas à m’écrire, je réponds rapidement !</p>
   </div>
 
   <div class="form-wrapper">
-    <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="grid formgrid gap-3">
+    <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="grid formgrid gap-3" autocomplete="off">
       <div class="field col-12">
         <label for="name">Nom</label>
         <input id="name" type="text" pInputText formControlName="name" />

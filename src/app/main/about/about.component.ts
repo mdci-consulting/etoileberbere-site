@@ -63,6 +63,7 @@ import { Project } from "./data-access/project.model";
     projects: Project[] = [];
     isLoading = true;
     errorMessage = '';
+    name_cv = 'CV_Youssef_Massaoudi_';
 
     constructor(
         private router: Router,
@@ -97,8 +98,10 @@ import { Project } from "./data-access/project.model";
 
      // Méthode pour télécharger le CV
      downloadCV() {
-             const filePath = 'assets/documents/mon-cv.pdf';
-             const fileName = 'mon-cv.pdf';
+             const filePath = 'assets/documents/CV_Youssef_Massaoudi.pdf';
+             const now = new Date();
+             const formattedDate = now.toISOString().split('T')[0];
+             const fileName = `${this.name_cv}${formattedDate}.pdf`;
 
              fetch(filePath)
                .then(response => {

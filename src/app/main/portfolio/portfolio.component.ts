@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
@@ -13,6 +13,7 @@ import { PLATFORM_ID, Inject } from '@angular/core';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss'],
   imports: [CommonModule, CarouselModule, ButtonModule, CardModule, TagModule]

@@ -14,7 +14,7 @@ html, body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background: rgba(30, 30, 30, 0.9);
+  background: rgba(44, 62, 80, 0.9);
 }
 
 
@@ -30,30 +30,12 @@ a:hover {
   color: #0088cc;
 }
 
-.project-card, .profile-description {
-  text-align: left;
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 400;
-  color: #d1d1d1;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-left: 4px solid #00FF9F;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 255, 159, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-
-.project-card:hover, .profile-description:hover {
-  transform: translateX(5px);
-  box-shadow: 0 0 15px rgba(0, 255, 159, 0.4);
-}
 
 input, textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  background: rgba(27, 30, 43, 0.85);
+  background: rgba(255, 255, 255, 0.05);
   color: white;
   border-radius: 5px;
   font-size: 16px;

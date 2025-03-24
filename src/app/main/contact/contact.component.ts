@@ -14,8 +14,8 @@ import { ButtonModule } from 'primeng/button';
 })
 export class ContactComponent {
   contactForm: FormGroup;
-  successMessage: string = '';
-  errorMessage: string = '';
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.contactForm = this.fb.group({
@@ -36,13 +36,27 @@ export class ContactComponent {
 
     this.http.post(formspreeEndpoint, formData).subscribe({
       next: () => {
-        this.successMessage = 'Message envoyé avec succès !';
+        this.showSuccess("Formulaire envoyé avec succès !");
         this.contactForm.reset();
       },
       error: () => {
-        this.errorMessage = 'Erreur lors de l’envoi du message.';
+        this.showError("Une erreur est survenue lors de l’envoi.");
       }
     });
+  }
+
+  showSuccess(message: string) {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = null;
+    }, 3000);
+  }
+
+  showError(message: string) {
+    this.errorMessage = message;
+    setTimeout(() => {
+      this.errorMessage = null;
+    }, 3000);
   }
 
   get f() {
