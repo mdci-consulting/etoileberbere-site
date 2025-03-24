@@ -1,0 +1,21 @@
+.custom-header {
+  width: 100%;
+  background-color: var(--surface-ground);
+  padding: 0.5rem 1rem;
+}
+
+:host ::ng-deep .custom-menubar {
+  justify-content: space-between;
+  align-items: center;
+
+  .p-menubar-end {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-toggle-btn {
+    margin-left: 1rem;
+    border-radius: 50%;
+  }
+}

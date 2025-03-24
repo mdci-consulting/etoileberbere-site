@@ -1,0 +1,75 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(30, 30, 30, 0.9);
+}
+
+
+.contact-section {
+  padding: 2rem 1rem;
+  width: 100%;
+
+}
+
+.form-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+form .field {
+  margin-bottom: 1rem;
+}
+
+form .field label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+form .field small {
+  margin-top: 0.25rem;
+}
+
+form input,
+form textarea {
+  width: 100%;
+}
+
+ button {
+   background: #00ff00;
+   color: black;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   font-weight: bold;
+   transition: 0.3s;
+ }
+
+ button:hover {
+   background: #33ff33;
+   box-shadow: 0 0 10px #00ff00;
+ }
+
+ .error-message {
+   color: #ff0000;
+   font-size: 0.875rem;
+   margin-top: 0.25rem;
+ }
+
+ .success {
+   color: #28a745;
+   font-size: 0.875rem;
+   margin-top: 1rem;
+ }
+
+ .error {
+   color: #dc3545;
+   font-size: 0.875rem;
+   margin-top: 1rem;
+ }

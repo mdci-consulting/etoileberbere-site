@@ -1,99 +1,35 @@
-/* === GLOBAL: Assurer une mise en page flexible et propre === */
+/* You can add global styles to this file, and also import other style files */
+ body.dark-mode {
+  background-color: #121212;
+  color: #1E3A8A;
+}
+
+body.dark-mode a {
+  color: #1E3A8A;
+}
+
+
+/* === GLOBAL === */
 html, body {
-  height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Arial', sans-serif;
-  color: white;
-  overflow-x: hidden;
-  position: relative; /* Important pour le positionnement du canvas */
+  background: rgba(30, 30, 30, 0.9);
 }
 
-/* === HEADER FIXE === */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background: rgba(30, 30, 30, 0.95);
-  z-index: 100;
-}
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 15px 0;
-}
-
-nav ul li a {
-  color: #00FF9F;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s ease-in-out;
-}
-
-nav ul li a:hover {
-  color: #A78BFA;
-}
-
-/* Titres et paragraphes */
+/* === TEXTES & LIENS === */
 h1, h2, h3 {
   color: #00ff00;
 }
-
-/* Liens */
 a {
   color: #00ccff;
   text-decoration: none;
 }
-
 a:hover {
   color: #0088cc;
 }
 
-/* ✅ Correction du container principal pour éviter que le footer flotte */
-.app-container {
- display: flex;
- flex-direction: column;
- width: 100%;
- min-height: 100vh;
-}
-
-/* === MAIN: Correction pour éviter le chevauchement avec header === */
-main {
-  flex-grow: 1;
-  display: flex;
-  width: 100%;
-  min-height: calc(100vh - 120px);
-  justify-content: center;
-  align-items: center;
-  max-width: 1200;
-}
-
-/* === FOOTER === */
-footer {
-  text-align: center;
-  padding: 10px;
-  background: rgba(30, 36, 50, 0.9);
-  color: white;
-  width: 100%;
-  margin-top: auto;
-}
-
-/* === CAROUSEL PORTFOLIO === */
-.p-carousel {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* === PROJET - CARTE === */
 .project-card, .profile-description {
   text-align: left;
   font-size: 18px;
@@ -106,7 +42,6 @@ footer {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 255, 159, 0.2);
   transition: all 0.3s ease-in-out;
-  width: 100%;
 }
 
 .project-card:hover, .profile-description:hover {
@@ -124,24 +59,19 @@ input, textarea {
   font-size: 16px;
 }
 
+.text-content {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #d1d1d1;
+}
+
 /* === BOUTONS === */
 .p-button {
   background-color: #007bff !important;
   color: white !important;
   border-radius: 5px;
 }
-
 .p-button:hover {
   background-color: #0056b3 !important;
-}
-
-/* === DARK MODE & LIGHT MODE === */
-.light-mode {
-  background-color: #f5f5f5;
-  color: #333;
-}
-
-.dark-mode {
-  background-color: #121212;
-  color: white;
 }

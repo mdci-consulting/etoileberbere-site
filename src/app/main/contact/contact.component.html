@@ -1,0 +1,47 @@
+<div class="form-container px-3 py-4">
+
+  <div class="text-center mb-5">
+    <h2 class="text-3xl font-bold">📬 Contactez-moi</h2>
+    <p class="text-gray-600">N'hésitez pas à m’écrire, je réponds rapidement !</p>
+  </div>
+
+  <div class="form-wrapper">
+    <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="grid formgrid gap-3">
+      <div class="field col-12">
+        <label for="name">Nom</label>
+        <input id="name" type="text" pInputText formControlName="name" />
+        <small *ngIf="f['name'].touched && f['name'].errors?.['required']" class="text-red-500">Le nom est requis.</small>
+      </div>
+
+      <div class="field col-12">
+        <label for="email">Email</label>
+        <input id="email" type="email" pInputText formControlName="email" />
+        <small *ngIf="f['email'].touched && f['email'].errors?.['required']" class="text-red-500">L'email est requis.</small>
+        <small *ngIf="f['email'].touched && f['email'].errors?.['email']" class="text-red-500">Email invalide.</small>
+      </div>
+
+      <!-- Ligne : Sujet -->
+      <div class="field col-12">
+        <label for="subject">Sujet</label>
+        <input id="subject" type="text" pInputText formControlName="subject" />
+        <small *ngIf="f['subject'].touched && f['subject'].errors?.['required']" class="text-red-500">Le sujet est requis.</small>
+      </div>
+
+      <!-- Ligne : Message -->
+      <div class="field col-12">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" pInputTextarea formControlName="message"></textarea>
+        <small *ngIf="f['message'].touched && f['message'].errors?.['required']" class="text-red-500">Le message est requis.</small>
+      </div>
+
+      <!-- Bouton -->
+      <div class="col-12">
+        <button pButton type="submit" label="Envoyer" class="w-full md:w-auto" [disabled]="contactForm.invalid"></button>
+      </div>
+
+    </form>
+    <!-- Messages de succès / erreur -->
+    <p *ngIf="successMessage" class="p-text-success mt-3">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="p-text-danger mt-3">{{ errorMessage }}</p>
+  </div>
+</div>

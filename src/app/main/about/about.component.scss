@@ -1,0 +1,28 @@
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.profile-img {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.blinking-cursor {
+   font-size: 30px;
+   font-style: italic;
+   font-weight: bold;
+   color: #00FF9F;
+   text-shadow: 0 0 10px rgba(0, 255, 159, 0.8);
+   animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+ @keyframes flicker {
+   0% { opacity: 1; }
+   50% { opacity: 0.8; }
+   100% { opacity: 1; }
+ }

@@ -1,0 +1,62 @@
+<div class="portfolio-container px-3 py-4">
+
+  <h2 class="text-3xl font-bold mb-3">💼 Mon Portfolio</h2>
+
+  <p *ngIf="projects.length === 0" class="text-red-500 font-semibold mb-3">
+    ❌ Aucun projet trouvé
+  </p>
+
+  <p-carousel
+    [value]="projects"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="8000"
+    [page]="selectedIndex"
+    [responsiveOptions]="[
+      { breakpoint: '768px', numVisible: 1, numScroll: 1 }
+    ]"
+    class="mb-5">
+
+    <ng-template pTemplate="item" let-project>
+      <div class="project-card grid md:flex gap-4 shadow-2 p-3 border-round">
+
+        <h3 class="text-2xl font-bold text-primary mb-1">{{ project.title }}</h3>
+        <!-- IMAGE -->
+        <div class="col-12 md:w-30rem">
+          <img [src]="project.image"
+               [alt]="project.title"
+               class="w-full border-round"
+               style="object-fit: cover; max-height: 300px;">
+        </div>
+
+        <!-- CONTENU -->
+        <div class="col-12 flex flex-column gap-2">
+          <p class="text-content mb-2">{{ project.description }}</p>
+
+          <div *ngIf="project.descriptionDetails?.length">
+            <p class="font-semibold text-sm text-gray-600">Fonctionnalités :</p>
+            <ul class="ml-3 text-sm">
+              <li *ngFor="let desDetail of project.descriptionDetails">{{ desDetail }}</li>
+            </ul>
+          </div>
+
+          <div class="mt-2">
+            <p class="font-semibold">🧪 Technologies :</p>
+            <div class="flex flex-wrap gap-2 mt-1">
+              <p-tag *ngFor="let tech of project.technologies" severity="info">{{ tech }}</p-tag>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <a [href]="project.link" target="_blank" rel="noopener">
+              <button pButton label="🔗 Voir le projet" icon="pi pi-external-link" severity="success"></button>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </ng-template>
+  </p-carousel>
+
+</div>

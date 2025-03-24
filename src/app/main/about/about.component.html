@@ -1,0 +1,62 @@
+ <div class="about-container px-3 py-4">
+    <section #aboutSection id="about" class="text-center py-5" [@fadeIn]>
+      <p class="text-4xl font-bold mb-2">{{ dynamicTitle }}<span class="blinking-cursor">|</span></p>
+    </section>
+
+    <div class="flex flex-column md:flex-row align-items-center justify-content-center gap-4 mb-5">
+      <img src="assets/profile_2.jpg" alt="Photo de profil"
+           class="profile-img border-circle"
+           style="max-width: 150px;" />
+      <div class="text-center md:text-left">
+        <h1 class="text-3xl font-bold mb-2">Bienvenue !</h1>
+        <p class="profile-description mb-3">
+          Je suis <strong>Youssef Massaoudi</strong>, consultant Full Stack Java/Angular avec
+          <strong>{{ yearsOfExperience }} ans d'expérience</strong> {{ presentation }}
+        </p>
+        <button
+          pButton
+          icon="pi pi-download"
+          label="📄 Télécharger mon CV"
+          class="w-full md:w-auto"
+          severity="info"
+          (click)="downloadCV()">
+        </button>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-semibold mb-3">🛠️ Compétences</h2>
+    <div class="flex flex-wrap gap-2 mb-5">
+      <p-tag *ngFor="let skill of skills" severity="info">{{ skill }}</p-tag>
+    </div>
+
+    <h2 class="text-2xl font-semibold mb-3">💼 Projets récents</h2>
+    <p-carousel
+      [value]="projects"
+      [numVisible]="1"
+      [numScroll]="1"
+      [circular]="true"
+      [autoplayInterval]="4000"
+      [responsiveOptions]="[{ breakpoint: '768px', numVisible: 1, numScroll: 1 }]"
+      class="mb-5">
+
+      <ng-template pTemplate="item" let-project>
+        <div class="project-card p-3 shadow-2 border-round flex flex-column align-items-start">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <a [routerLink]="['/portfolio', project.id]">
+            <button pButton label="🔗 Voir le détail" icon="pi pi-external-link" severity="success"></button>
+          </a>
+        </div>
+      </ng-template>
+    </p-carousel>
+
+    <h2 class="text-2xl font-semibold mb-3">📬 Me contacter</h2>
+    <div class="flex flex-column gap-2">
+      <a routerLink="/contact" class="text-primary block">👉 Aller à la page Contact</a>
+      <a href="https://www.linkedin.com/in/youssef-massaoudi-90a2a990" target="_blank" rel="noopener noreferrer" class="block">
+        🔗 Me contacter sur LinkedIn
+      </a>
+    </div>
+
+  </div>
+

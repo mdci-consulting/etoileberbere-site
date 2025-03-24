@@ -1,3 +1,13 @@
+:host {
+  display: block;
+  scroll-behavior: smooth;
+  padding: 1rem;
+}
+
+form .field {
+  margin-bottom: 1rem;
+}
+
 #matrix-canvas {
   position: fixed;
   top: 0;
@@ -10,31 +20,4 @@
   opacity: 0.8;
   filter: blur(1px);
   pointer-events: none;
-}
-
-/* Navigation */
-nav {
-  width: 100%;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px 0;
-  background: rgba(30, 36, 50, 0.9);
-  border-radius: 10px;
-}
-
-nav ul li a {
-  color: #00FF9F;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s ease-in-out;
-}
-
-nav ul li a:hover {
-  color: #A78BFA;
 }

@@ -1,33 +1,8 @@
-<!-- Effet Matrix en arrière-plan -->
 <canvas id="matrix-canvas"></canvas>
 
-<div class="app-container">
-  <header>
-    <nav>
-      <ul>
-        <li><a routerLink="/about">Présentation</a></li>
-        <li><a [routerLink]="['/portfolio', 1]">Portfolio</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
-        <li>
-          <p-toggleButton
-            [(ngModel)]="isDarkMode"
-            onLabel="🌙 Soft Dark"
-            offLabel="☀️ Light Mode"
-            (onChange)="toggleDarkMode()">
-          </p-toggleButton>
-        </li>
-      </ul>
-    </nav>
-  </header>
+<app-header></app-header>
 
-  <div class="content-wrapper">
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-
-  <footer>
-    <p>© 2025 - Youssef Massaoudi | Full Stack Consultant Java / Angular</p>
-  </footer>
-</div>
-
+<main class="p-4">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>

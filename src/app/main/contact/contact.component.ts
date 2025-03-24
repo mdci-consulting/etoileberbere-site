@@ -44,4 +44,8 @@ export class ContactComponent {
       }
     });
   }
+
+  get f() {
+    return this.contactForm.controls;
+  }
 }
