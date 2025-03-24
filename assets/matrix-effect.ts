@@ -1,4 +1,5 @@
 export function startMatrixEffect() {
+    if (typeof document === 'undefined' || typeof window === 'undefined') return;
     const canvas = document.getElementById('matrix-canvas') as HTMLCanvasElement;
     if (!canvas) {
         console.error("❌ Matrix Canvas non trouvé !");
