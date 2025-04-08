@@ -3,9 +3,11 @@
     "id": 1,
     "title": "Gestion de Comptes Bancaires - Architecture Hexagonale, DDD et TDD",
     "description": "Ce projet implémente une application de gestion de comptes bancaires en suivant l'architecture hexagonale, Domain-Driven Design (DDD) et Test driven development (TDD). ",
-    "descriptionDetails": ["Création et gestion de comptes", "Dépôt et retrait d'argent" ,"Historique des transactions", "Génération de relevés bancaires", "API REST pour interagir avec le système", "Documentation Swagger pour tester l'API", "Interface en ligne de commande (CLI) pour exécuter des opérations bancaires"],
-    "technologies": ["Java 17", "Spring Boot" ,"Spring Data JPA", "H2 Database", "JUnit 5 & Mockito", "Maven", "Swagger (Documentation API)", "CLI avec CommandLineRunner"],
-    "link": "https://github.com/mdci-projets/bank-account.git",
+    "descriptionDetails": ["Création et gestion de comptes", "Dépôt et retrait d'argent" ,"Historique des transactions", "Génération du relevé bancaire mensuel glissant", "API REST pour interagir avec le système",
+      "Documentation Swagger pour tester l'API", "Gestion centralisée des erreurs", "Gestion du découvert autorisé sur les comptes courants", "Intégration du livret d’épargne avec règles de dépôt/retrait spécifiques",
+      "Génération des relevés bancaires PDF complets et structurés à partir des opérations du compte"],
+    "technologies": ["Java 21", "Spring Boot" ,"Spring Data JPA", "H2 Database", "JUnit 5 & Mockito", "Maven", "Swagger (Documentation API)", "MapStruct", "Docker", "GitLab CI", "Jakarta Validation", "Architecture hexagonale", "DDD", "TDD"],
+    "link": "https://github.com/mdci-projets/bank-account-v2.git",
     "image": "assets/portfolio/hexagonal_architecture.jpg"
   },
   {
