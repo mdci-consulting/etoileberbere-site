@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
- body.dark-mode {
+body.dark-mode {
   background-color: #121212;
   color: #1E3A8A;
 }
@@ -8,7 +8,6 @@ body.dark-mode a {
   color: #1E3A8A;
 }
 
-
 /* === GLOBAL === */
 html, body {
   min-height: 100vh;
@@ -16,7 +15,6 @@ html, body {
   padding: 0;
   background: rgba(44, 62, 80, 0.9);
 }
-
 
 /* === TEXTES & LIENS === */
 h1, h2, h3 {
@@ -29,7 +27,6 @@ a {
 a:hover {
   color: #0088cc;
 }
-
 
 input, textarea {
   width: 100%;

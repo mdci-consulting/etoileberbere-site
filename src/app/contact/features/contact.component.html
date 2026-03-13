@@ -1,0 +1,60 @@
+<div class="contact-container p-px-3 p-py-4">
+
+  <div class="p-grid p-justify-center">
+    <div class="p-col-12 p-md-10 p-lg-8">
+
+      <h2 class="p-text-2xl p-mb-4">📬 Contactez-moi</h2>
+
+      <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="p-fluid">
+
+        <!-- Nom -->
+        <div class="p-field p-mb-3">
+          <label for="name">Nom :</label>
+          <input id="name" pInputText type="text" formControlName="name" placeholder="Votre nom" />
+          <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="p-error">
+            <small *ngIf="contactForm.get('name')?.errors?.['required']">Le nom est requis.</small>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="p-field p-mb-3">
+          <label for="email">Email :</label>
+          <input id="email" pInputText type="email" formControlName="email" placeholder="Votre email" />
+          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="p-error">
+            <small *ngIf="contactForm.get('email')?.errors?.['required']">L'email est requis.</small>
+            <small *ngIf="contactForm.get('email')?.errors?.['email']">Veuillez entrer un email valide.</small>
+          </div>
+        </div>
+
+        <!-- Sujet -->
+        <div class="p-field p-mb-3">
+          <label for="subject">Sujet :</label>
+          <input id="subject" pInputText type="text" formControlName="subject" placeholder="Votre sujet" />
+          <div *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched" class="p-error">
+            <small *ngIf="contactForm.get('subject')?.errors?.['required']">Le sujet est requis.</small>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="p-field p-mb-3">
+          <label for="message">Message :</label>
+          <textarea id="message" pInputTextarea formControlName="message" placeholder="Votre message" rows="5"></textarea>
+          <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="p-error">
+            <small *ngIf="contactForm.get('message')?.errors?.['required']">Le message est requis.</small>
+          </div>
+        </div>
+
+        <!-- Bouton d'envoi -->
+        <div class="p-d-flex p-jc-end">
+          <button pButton type="submit" label="Envoyer" [disabled]="contactForm.invalid"></button>
+        </div>
+
+      </form>
+
+      <!-- Messages de succès / erreur -->
+      <p *ngIf="successMessage" class="p-text-success p-mt-3">{{ successMessage }}</p>
+      <p *ngIf="errorMessage" class="p-text-danger p-mt-3">{{ errorMessage }}</p>
+
+    </div>
+  </div>
+</div>

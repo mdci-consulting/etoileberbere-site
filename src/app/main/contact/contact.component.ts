@@ -6,11 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'],
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, ButtonModule]
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    styleUrls: ['./contact.component.scss'],
+    imports: [CommonModule, HttpClientModule, ReactiveFormsModule, ButtonModule]
 })
 export class ContactComponent {
   contactForm: FormGroup;
