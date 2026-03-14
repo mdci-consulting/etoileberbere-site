@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="about-container p-px-3 p-py-4">
 
   <section #aboutSection id="about" [@fadeIn]>
@@ -31,9 +32,6 @@
   <div class="skills p-d-flex p-flex-wrap p-gap-2 p-mb-4" role="list" aria-label="Liste des compétences">
     <p-tag *ngFor="let skill of skills" severity="info" role="listitem">{{ skill }}</p-tag>
   </div>
-
-  <!-- Erreur chargement -->
-  <p *ngIf="errorMessage" class="error-message" role="alert">{{ errorMessage }}</p>
 
   <!-- Portfolio Carousel -->
   <h2 class="p-text-xl p-mb-2">Projets récents</h2>

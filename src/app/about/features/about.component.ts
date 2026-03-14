@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ProjectsService } from "../data-access/projects.service";
 import { Project } from "../data-access/project.model";
@@ -20,7 +22,9 @@ import { Project } from "../data-access/project.model";
         ButtonModule,
         TagModule,
         RouterModule,
+        ToastModule,
     ],
+    providers: [MessageService],
     animations: [
         trigger('fadeIn', [
             transition(':enter', [
@@ -59,13 +63,13 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
     projects: Project[] = [];
     isLoading = true;
-    errorMessage = '';
     private readonly nameCv = 'CV_Youssef_Massaoudi_';
 
     constructor(
         private router: Router,
         @Inject(PLATFORM_ID) private platformId: Object,
-        private projectsService: ProjectsService
+        private projectsService: ProjectsService,
+        private messageService: MessageService
     ) {
         this.routerSubscription = this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
@@ -99,10 +103,13 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.projects = data;
                 this.isLoading = false;
             },
-            error: (err) => {
-                this.errorMessage = 'Erreur lors du chargement des projets';
+            error: () => {
                 this.isLoading = false;
-                console.error(err);
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Erreur',
+                    detail: 'Erreur lors du chargement des projets'
+                });
             },
         });
     }
@@ -127,9 +134,12 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
                 link.click();
                 URL.revokeObjectURL(link.href);
             })
-            .catch(error => {
-                console.error('Erreur lors du téléchargement :', error);
-                alert('Le fichier n\'est pas disponible. Veuillez réessayer plus tard.');
+            .catch(() => {
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Erreur',
+                    detail: 'Le fichier n\'est pas disponible. Veuillez réessayer plus tard.'
+                });
             });
     }
 

@@ -5,20 +5,25 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-contact',
     standalone: true,
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss'],
-    imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputTextModule]
+    imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputTextModule, ToastModule],
+    providers: [MessageService]
 })
 export class ContactComponent {
     contactForm: FormGroup;
-    successMessage: string | null = null;
-    errorMessage: string | null = null;
 
-    constructor(private fb: FormBuilder, private http: HttpClient) {
+    constructor(
+        private fb: FormBuilder,
+        private http: HttpClient,
+        private messageService: MessageService
+    ) {
         this.contactForm = this.fb.group({
             name: ['', Validators.required],
             subject: ['', Validators.required],
@@ -37,27 +42,21 @@ export class ContactComponent {
 
         this.http.post(formspreeEndpoint, formData).subscribe({
             next: () => {
-                this.showSuccess("Formulaire envoyé avec succès !");
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Envoyé',
+                    detail: 'Formulaire envoyé avec succès !'
+                });
                 this.contactForm.reset();
             },
             error: () => {
-                this.showError("Une erreur est survenue lors de l'envoi.");
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Erreur',
+                    detail: "Une erreur est survenue lors de l'envoi."
+                });
             }
         });
-    }
-
-    showSuccess(message: string) {
-        this.successMessage = message;
-        setTimeout(() => {
-            this.successMessage = null;
-        }, 3000);
-    }
-
-    showError(message: string) {
-        this.errorMessage = message;
-        setTimeout(() => {
-            this.errorMessage = null;
-        }, 3000);
     }
 
     get f() {
