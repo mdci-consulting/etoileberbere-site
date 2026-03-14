@@ -15,10 +15,10 @@ import { ThemeService } from '../shared/theme.service';
        <ng-template pTemplate="end">
          <button
            pButton
-           icon="pi pi-moon"
+           [icon]="themeService.isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'"
            (click)="toggleTheme()"
            class="theme-toggle-btn"
-           aria-label="Changer le thème"
+           [attr.aria-label]="themeService.isDarkMode() ? 'Passer en mode clair' : 'Passer en mode sombre'"
            type="button"
          ></button>
        </ng-template>
@@ -33,10 +33,9 @@ export class HeaderComponent {
     { label: 'Contact', routerLink: '/contact' }
   ];
 
-  constructor(private themeService: ThemeService) {}
+  constructor(public themeService: ThemeService) {}
 
   toggleTheme() {
     this.themeService.toggleTheme();
   }
 }
-
