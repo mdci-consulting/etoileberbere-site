@@ -3,12 +3,12 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private dark = false;
+  private dark = true;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       const saved = localStorage.getItem('theme');
-      this.dark = saved === 'dark';
+      this.dark = saved !== 'light';
       this.applyTheme();
     }
   }
@@ -28,11 +28,12 @@ export class ThemeService {
   private applyTheme(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    const themeName = this.dark ? 'lara-dark-indigo' : 'lara-light-blue';
-    const themeLink = document.getElementById('app-theme') as HTMLLinkElement;
-    if (themeLink) {
-      themeLink.href = `assets/themes/${themeName}/theme.css`;
+    if (this.dark) {
+      document.body.classList.remove('light-mode');
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+      document.body.classList.add('light-mode');
     }
-    document.body.classList.toggle('dark-mode', this.dark);
   }
 }

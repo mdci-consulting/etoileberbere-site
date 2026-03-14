@@ -7,17 +7,12 @@ describe('ThemeService', () => {
 
   beforeEach(() => {
     localStorage.clear();
-    // Créer l'élément theme link pour les tests
-    let themeLink = document.getElementById('app-theme');
-    if (!themeLink) {
-      themeLink = document.createElement('link');
-      themeLink.id = 'app-theme';
-      document.head.appendChild(themeLink);
-    }
+    document.body.classList.remove('dark-mode', 'light-mode');
   });
 
   afterEach(() => {
     localStorage.clear();
+    document.body.classList.remove('dark-mode', 'light-mode');
   });
 
   function createService(platform: string = 'browser') {
@@ -35,48 +30,45 @@ describe('ThemeService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should default to light mode', () => {
+  it('should default to dark mode', () => {
     service = createService();
-    expect(service.isDarkMode()).toBeFalse();
-  });
-
-  it('should toggle to dark mode', () => {
-    service = createService();
-    service.toggleTheme();
     expect(service.isDarkMode()).toBeTrue();
   });
 
-  it('should toggle back to light mode', () => {
+  it('should toggle to light mode', () => {
+    service = createService();
+    service.toggleTheme();
+    expect(service.isDarkMode()).toBeFalse();
+  });
+
+  it('should toggle back to dark mode', () => {
     service = createService();
     service.toggleTheme();
     service.toggleTheme();
-    expect(service.isDarkMode()).toBeFalse();
+    expect(service.isDarkMode()).toBeTrue();
   });
 
   it('should persist theme in localStorage', () => {
     service = createService();
     service.toggleTheme();
-    expect(localStorage.getItem('theme')).toBe('dark');
+    expect(localStorage.getItem('theme')).toBe('light');
   });
 
-  it('should read theme from localStorage on init', () => {
-    localStorage.setItem('theme', 'dark');
+  it('should read light theme from localStorage on init', () => {
+    localStorage.setItem('theme', 'light');
     service = createService();
-    expect(service.isDarkMode()).toBeTrue();
+    expect(service.isDarkMode()).toBeFalse();
   });
 
-  it('should update theme link href', () => {
+  it('should add dark-mode class on body by default', () => {
     service = createService();
-    service.toggleTheme();
-    const themeLink = document.getElementById('app-theme') as HTMLLinkElement;
-    expect(themeLink.href).toContain('lara-dark-indigo');
-  });
-
-  it('should toggle body dark-mode class', () => {
-    service = createService();
-    service.toggleTheme();
     expect(document.body.classList.contains('dark-mode')).toBeTrue();
+  });
+
+  it('should switch to light-mode class on toggle', () => {
+    service = createService();
     service.toggleTheme();
+    expect(document.body.classList.contains('light-mode')).toBeTrue();
     expect(document.body.classList.contains('dark-mode')).toBeFalse();
   });
 });

@@ -12,7 +12,8 @@ import { CommonModule } from '@angular/common';
       color: var(--text-secondary);
       font-size: 0.85rem;
       border-top: 1px solid var(--border-subtle);
-      margin-top: auto;
+      background: var(--bg-primary);
+      backdrop-filter: blur(8px);
     }
     .footer-accent { color: var(--accent); }
   `],

@@ -2,10 +2,25 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
 }
 
 main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+app-header {
+  position: relative;
+  z-index: 100;
+}
+
+app-footer {
+  position: relative;
+  z-index: 1;
 }
 
 .skip-link {
@@ -29,11 +44,9 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw !important;
-  height: 100vh !important;
-  background: transparent !important;
-  z-index: -10;
-  opacity: 0.15;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
   pointer-events: none;
 }
 

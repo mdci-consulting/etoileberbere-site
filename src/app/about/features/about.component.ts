@@ -1,7 +1,7 @@
 import { Component, ElementRef, Inject, OnDestroy, OnInit, AfterViewInit, PLATFORM_ID, ViewChild, NgZone } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { Subject, Subscription, interval, takeUntil, take, concatMap, delay, of, tap, repeat } from 'rxjs';
+import { Subject, Subscription, interval, takeUntil, take, concat, delay, of, tap, repeat, switchMap, EMPTY } from 'rxjs';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -175,8 +175,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     private startTypewriter(): void {
         this.ngZone.runOutsideAngular(() => {
             of(null).pipe(
-                // Pour chaque texte : taper → pause → supprimer → pause → suivant
-                concatMap(() => this.typeAndDelete$()),
+                switchMap(() => this.typeAndDelete$()),
                 repeat(),
                 takeUntil(this.stopTyping$),
                 takeUntil(this.destroy$)
@@ -186,34 +185,32 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private typeAndDelete$() {
         const text = this.texts[this.textIndex];
-        const typeLength = text.length;
-        const typeSpeed = 100;
-        const deleteSpeed = 50;
+        const len = text.length;
 
-        return of(null).pipe(
+        return concat(
             // Taper lettre par lettre
-            concatMap(() => interval(typeSpeed).pipe(
-                take(typeLength),
+            interval(150).pipe(
+                take(len),
                 tap(i => this.ngZone.run(() => {
                     this.dynamicTitle = text.substring(0, i + 1);
                 }))
-            )),
-            // Pause après avoir tapé
-            concatMap(() => of(null).pipe(delay(1000))),
+            ),
+            // Pause pour lire
+            of(null).pipe(delay(3500)),
             // Supprimer lettre par lettre
-            concatMap(() => interval(deleteSpeed).pipe(
-                take(typeLength),
+            interval(40).pipe(
+                take(len),
                 tap(i => this.ngZone.run(() => {
-                    this.dynamicTitle = text.substring(0, typeLength - i - 1);
+                    this.dynamicTitle = text.substring(0, len - i - 1);
                 }))
-            )),
-            // Pause avant le texte suivant + avancer l'index
-            concatMap(() => of(null).pipe(
+            ),
+            // Pause + avancer l'index
+            of(null).pipe(
                 delay(500),
                 tap(() => {
                     this.textIndex = (this.textIndex + 1) % this.texts.length;
                 })
-            ))
+            )
         );
     }
 }
