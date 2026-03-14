@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <footer class="text-center p-3 mt-4 bg-gray-200">
+    <footer class="text-center p-3 mt-4 bg-gray-200" role="contentinfo">
      © {{ currentYear }} - Youssef Massaoudi | Full Stack Consultant Java / Angular
     </footer>
   `

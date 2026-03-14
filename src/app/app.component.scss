@@ -4,6 +4,22 @@
   padding: 1rem;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #00FF9F;
+  color: #000;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:focus {
+    top: 0;
+  }
+}
+
 form .field {
   margin-bottom: 1rem;
 }

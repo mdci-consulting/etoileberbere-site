@@ -1,8 +1,8 @@
 <div class="portfolio-container p-px-3 p-py-4">
 
-  <h2 class="p-text-2xl p-mb-3">💼 Mon Portfolio</h2>
+  <h2 class="p-text-2xl p-mb-3">Mon Portfolio</h2>
 
-  <p *ngIf="projects.length === 0" class="error-message p-text-danger">❌ Aucun projet trouvé</p>
+  <p *ngIf="projects.length === 0" class="error-message p-text-danger" role="alert">Aucun projet trouvé</p>
 
   <p-carousel
     [value]="projects"
@@ -11,19 +11,25 @@
     [circular]="true"
     [autoplayInterval]="8000"
     [page]="selectedIndex"
-    [responsiveOptions]="[{ breakpoint: '768px', numVisible: 1, numScroll: 1 }]"
+    [responsiveOptions]="[
+      { breakpoint: '1024px', numVisible: 2, numScroll: 1 },
+      { breakpoint: '768px', numVisible: 1, numScroll: 1 }
+    ]"
     styleClass="p-mb-4">
 
     <ng-template #item let-project>
       <div class="project-card p-d-flex p-flex-column p-md-flex-row p-gap-4 p-shadow-2 p-p-3 border-round">
 
-        <!-- IMAGE - Colonne gauche (30%) -->
+        <!-- IMAGE -->
         <div class="project-image-container p-flex-1 p-md-flex-30">
-          <img [src]="project.image" alt="{{ project.title }}" class="project-image"
+          <img [src]="project.image"
+               [alt]="project.title"
+               class="project-image"
+               loading="lazy"
                style="width: 100%; border-radius: 8px;">
         </div>
 
-        <!-- CONTENU - Colonne droite (70%) -->
+        <!-- CONTENU -->
         <div class="project-details p-flex-1 p-md-flex-70">
           <h3 class="p-text-lg p-mb-2">{{ project.title }}</h3>
           <p class="p-mb-2">{{ project.description }}</p>
@@ -36,13 +42,14 @@
           </div>
 
           <p><strong>Technologies :</strong></p>
-          <div class="project-tags p-d-flex p-gap-4 p-flex-wrap p-gap-2">
-            <p-tag *ngFor="let tech of project.technologies" severity="info">{{ tech }}</p-tag>
+          <div class="project-tags p-d-flex p-gap-4 p-flex-wrap p-gap-2" role="list" aria-label="Technologies utilisées">
+            <p-tag *ngFor="let tech of project.technologies" severity="info" role="listitem">{{ tech }}</p-tag>
           </div>
 
           <div class="p-mt-3">
-            <a [href]="project.link" target="_blank">
-              <p-button label="🔗 Voir le projet" icon="pi pi-external-link" severity="success"></p-button>
+            <a [href]="project.link" target="_blank" rel="noopener noreferrer"
+               [attr.aria-label]="'Voir le projet ' + project.title + ' (ouvre un nouvel onglet)'">
+              <p-button label="Voir le projet" icon="pi pi-external-link" severity="success"></p-button>
             </a>
           </div>
         </div>

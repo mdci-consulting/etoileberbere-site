@@ -1,12 +1,15 @@
 <div class="about-container p-px-3 p-py-4">
 
   <section #aboutSection id="about" [@fadeIn]>
-    <p class="p-text-secondary p-text-bold p-mb-4">&gt; <span class="terminal-text">{{ dynamicTitle }}<span class="blinking-cursor">|</span></span></p>
+    <p aria-live="polite" class="p-text-secondary p-text-bold p-mb-4">&gt; <span class="terminal-text">{{ dynamicTitle }}<span class="blinking-cursor">|</span></span></p>
   </section>
 
   <!-- Section profil -->
   <div class="p-d-flex p-flex-column p-md-flex-row p-ai-center p-jc-center p-mb-4 p-gap-4">
-    <img src="assets/profile_2.jpg" alt="Photo de profil de Youssef Massaoudi" class="profile-img" style="max-width: 150px; border-radius: 50%;">
+    <img src="assets/profile_2.jpg"
+         alt="Photo de profil de Youssef Massaoudi, consultant Full Stack Java/Angular"
+         class="profile-img"
+         style="max-width: 150px; border-radius: 50%;">
     <div class="p-text-center p-md-text-left">
       <h1 class="p-text-2xl">Bienvenue !</h1>
       <p class="profile-description">
@@ -25,12 +28,12 @@
 
   <!-- Compétences -->
   <h2 class="p-text-xl p-mb-2">Compétences</h2>
-  <div class="skills p-d-flex p-flex-wrap p-gap-2 p-mb-4">
-    <p-tag *ngFor="let skill of skills" severity="info">{{ skill }}</p-tag>
+  <div class="skills p-d-flex p-flex-wrap p-gap-2 p-mb-4" role="list" aria-label="Liste des compétences">
+    <p-tag *ngFor="let skill of skills" severity="info" role="listitem">{{ skill }}</p-tag>
   </div>
 
   <!-- Erreur chargement -->
-  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  <p *ngIf="errorMessage" class="error-message" role="alert">{{ errorMessage }}</p>
 
   <!-- Portfolio Carousel -->
   <h2 class="p-text-xl p-mb-2">Projets récents</h2>
@@ -58,7 +61,11 @@
   <h2 class="p-text-xl p-mb-2">Me contacter</h2>
   <div class="p-d-flex p-flex-column p-gap-2">
     <a routerLink="/contact" class="p-text-primary d-block">Aller à la page Contact</a>
-    <a href="https://www.linkedin.com/in/youssef-massaoudi-90a2a990" target="_blank" rel="noopener noreferrer" class="d-block">
+    <a href="https://www.linkedin.com/in/youssef-massaoudi-90a2a990"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="d-block"
+       aria-label="Me contacter sur LinkedIn (ouvre un nouvel onglet)">
       Me contacter sur LinkedIn
     </a>
   </div>
