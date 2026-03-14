@@ -1,10 +1,12 @@
 <div class="about-container p-px-3 p-py-4">
 
-  <p class="p-text-secondary p-text-bold p-mb-4">&gt; <span class="terminal-text">{{ dynamicTitle }}|</span></p>
+  <section #aboutSection id="about" [@fadeIn]>
+    <p class="p-text-secondary p-text-bold p-mb-4">&gt; <span class="terminal-text">{{ dynamicTitle }}<span class="blinking-cursor">|</span></span></p>
+  </section>
 
   <!-- Section profil -->
   <div class="p-d-flex p-flex-column p-md-flex-row p-ai-center p-jc-center p-mb-4 p-gap-4">
-    <img src="assets/profile_2.jpg" alt="Photo de profil" class="profile-img" style="max-width: 150px; border-radius: 50%;">
+    <img src="assets/profile_2.jpg" alt="Photo de profil de Youssef Massaoudi" class="profile-img" style="max-width: 150px; border-radius: 50%;">
     <div class="p-text-center p-md-text-left">
       <h1 class="p-text-2xl">Bienvenue !</h1>
       <p class="profile-description">
@@ -12,7 +14,7 @@
         <strong>{{ yearsOfExperience }} ans d'expérience</strong> {{ presentation }}
       </p>
       <p-button
-        label="📄 Télécharger mon CV"
+        label="Télécharger mon CV"
         icon="pi pi-download"
         class="cv-button p-mt-2"
         severity="info"
@@ -22,13 +24,16 @@
   </div>
 
   <!-- Compétences -->
-  <h2 class="p-text-xl p-mb-2">🛠️ Compétences</h2>
+  <h2 class="p-text-xl p-mb-2">Compétences</h2>
   <div class="skills p-d-flex p-flex-wrap p-gap-2 p-mb-4">
     <p-tag *ngFor="let skill of skills" severity="info">{{ skill }}</p-tag>
   </div>
 
+  <!-- Erreur chargement -->
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
   <!-- Portfolio Carousel -->
-  <h2 class="p-text-xl p-mb-2">💼 Projets récents</h2>
+  <h2 class="p-text-xl p-mb-2">Projets récents</h2>
   <p-carousel
     [value]="projects"
     [numVisible]="1"
@@ -43,18 +48,18 @@
         <h3>{{ project.title }}</h3>
         <p>{{ project.description }}</p>
         <a [routerLink]="['/portfolio', project.id]">
-          <p-button label="🔗 Voir le détail" icon="pi pi-external-link" severity="success"></p-button>
+          <p-button label="Voir le détail" icon="pi pi-external-link" severity="success"></p-button>
         </a>
       </div>
     </ng-template>
   </p-carousel>
 
   <!-- Lien contact -->
-  <h2 class="p-text-xl p-mb-2">📬 Me contacter</h2>
+  <h2 class="p-text-xl p-mb-2">Me contacter</h2>
   <div class="p-d-flex p-flex-column p-gap-2">
-    <a routerLink="/contact" class="p-text-primary d-block">👉 Aller à la page Contact</a>
+    <a routerLink="/contact" class="p-text-primary d-block">Aller à la page Contact</a>
     <a href="https://www.linkedin.com/in/youssef-massaoudi-90a2a990" target="_blank" rel="noopener noreferrer" class="d-block">
-      🔗 Me contacter sur LinkedIn
+      Me contacter sur LinkedIn
     </a>
   </div>
 </div>

@@ -1,4 +1,3 @@
-/*
 .about-container {
   max-width: 1200px;
   width: 100%;
@@ -8,6 +7,10 @@
   background: rgba(30, 30, 30, 0.9);
   color: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .terminal-text {
@@ -19,8 +22,9 @@
   animation: flicker 1.5s infinite alternate;
 }
 
- */
-/* Animation "rétro terminal" *//*
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
 
 @keyframes flicker {
   0% { opacity: 1; }
@@ -28,15 +32,18 @@
   100% { opacity: 1; }
 }
 
- */
-/* === Profil === *//*
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 .profile-img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px; // optionnel si p-mb utilisé
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .skills {
@@ -46,58 +53,32 @@
   gap: 10px;
 }
 
+.project-card, .profile-description {
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #d1d1d1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-left: 4px solid #00FF9F;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 255, 159, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover, .profile-description:hover {
+  transform: translateX(5px);
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.4);
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
 a.d-block {
   display: block;
+  padding: 5px;
 }
- */
-
- .about-container {
-   max-width: 1200px;
-   width: 100%;
-   min-height: 95vh;
-   padding: 100px 40px 40px;
-   border-radius: 10px;
-   background: rgba(30, 30, 30, 0.9);
-   color: white;
-   text-align: center;
-
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   margin: 0 auto;
- }
-
- .terminal-text {
-   font-size: 30px;
-   font-style: italic;
-   font-weight: bold;
-   color: #00FF9F;
-   text-shadow: 0 0 10px rgba(0, 255, 159, 0.8);
-   animation: flicker 1.5s infinite alternate;
- }
-
- @keyframes flicker {
-   0% { opacity: 1; }
-   50% { opacity: 0.8; }
-   100% { opacity: 1; }
- }
-
- .profile-img {
-   width: 150px;
-   height: 150px;
-   border-radius: 50%;
-   object-fit: cover;
-   margin-bottom: 10px;
- }
-
- .skills {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   gap: 10px;
- }
-
- a.d-block {
-   display: block;
-   padding: 5px
- }

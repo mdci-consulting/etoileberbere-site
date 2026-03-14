@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
@@ -10,30 +10,39 @@ import { Project } from "../../about/data-access/project.model";
 
 @Component({
     selector: 'app-portfolio',
+    standalone: true,
     templateUrl: './portfolio.component.html',
     styleUrls: ['./portfolio.component.scss'],
     imports: [CommonModule, CarouselModule, ButtonModule, CardModule, TagModule]
 })
 export class PortfolioComponent implements OnInit {
-  private readonly projectsService = inject(ProjectsService);
-  public projects: Project[] = [];
-  public selectedIndex: number = 0;
+    private readonly projectsService = inject(ProjectsService);
+    public projects: Project[] = [];
+    public selectedIndex: number = 0;
 
-  constructor(private route: ActivatedRoute) {}
+    constructor(
+        private route: ActivatedRoute,
+        @Inject(PLATFORM_ID) private platformId: Object
+    ) {}
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const projectId = Number(params.get('id'));
+    ngOnInit() {
+        this.route.paramMap.subscribe(params => {
+            const projectId = Number(params.get('id'));
 
-      this.projectsService.get().subscribe((projects) => {
-        this.projects = projects;
+            this.projectsService.get().subscribe((projects) => {
+                this.projects = projects;
 
-        const projectIndex = this.projects.findIndex(p => p.id === projectId);
-        if (projectIndex !== -1) {
-          this.selectedIndex = projectIndex;
-        }
-        setTimeout(() => window.scrollTo({ top: 300, behavior: 'smooth' }), 300);
-      });
-    });
-  }
+                const projectIndex = this.projects.findIndex(p => p.id === projectId);
+                if (projectIndex !== -1) {
+                    this.selectedIndex = projectIndex;
+                }
+
+                if (isPlatformBrowser(this.platformId)) {
+                    setTimeout(() => {
+                        window.scrollTo({ top: 300, behavior: 'smooth' });
+                    }, 300);
+                }
+            });
+        });
+    }
 }
