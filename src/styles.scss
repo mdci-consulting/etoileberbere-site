@@ -49,6 +49,22 @@ input, textarea {
   margin: auto;
 }
 
+/* === CONTENEUR PAGE COMMUN === */
+.page-container {
+  max-width: 1200px;
+  width: 100%;
+  min-height: 95vh;
+  padding: 100px 40px 40px;
+  border-radius: 10px;
+  background: rgba(30, 30, 30, 0.9);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
 /* === CARTES PROJET & PROFIL === */
 .project-card, .profile-description {
   text-align: left;
@@ -67,17 +83,6 @@ input, textarea {
 .project-card:hover, .profile-description:hover {
   transform: translateX(5px);
   box-shadow: 0 0 15px rgba(0, 255, 159, 0.4);
-}
-
-/* === BOUTONS === */
-.p-button {
-  background-color: #007bff !important;
-  color: white !important;
-  border-radius: 5px;
-}
-
-.p-button:hover {
-  background-color: #0056b3 !important;
 }
 
 /* === MODES CLAIR / SOMBRE === */
