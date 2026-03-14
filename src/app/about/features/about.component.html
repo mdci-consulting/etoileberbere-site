@@ -38,14 +38,19 @@
   <section class="section">
     <h2 class="section-title">Projets récents</h2>
     <div class="projects-grid">
-      <div *ngFor="let project of projects" class="card project-card">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-        <a [routerLink]="['/portfolio', project.id]" class="btn-primary btn-success">
-          <i class="pi pi-external-link"></i>
-          Voir le détail
-        </a>
-      </div>
+      <a *ngFor="let project of projects; let i = index"
+         [routerLink]="['/portfolio', project.id]"
+         class="card project-card-link">
+        <app-tech-visual
+          [technologies]="project.technologies"
+          [projectIndex]="i"
+          [label]="project.title">
+        </app-tech-visual>
+        <div class="project-card-info">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+        </div>
+      </a>
     </div>
   </section>
 

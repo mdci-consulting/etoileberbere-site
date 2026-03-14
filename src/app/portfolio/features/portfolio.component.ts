@@ -4,13 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectsService } from "../../about/data-access/projects.service";
 import { Project } from "../../about/data-access/project.model";
 import { SeoService } from "../../shared/seo.service";
+import { TechVisualComponent } from "../../shared/components/tech-visual.component";
 
 @Component({
     selector: 'app-portfolio',
     standalone: true,
     templateUrl: './portfolio.component.html',
     styleUrls: ['./portfolio.component.scss'],
-    imports: [CommonModule]
+    imports: [CommonModule, TechVisualComponent]
 })
 export class PortfolioComponent implements OnInit {
     private readonly projectsService = inject(ProjectsService);

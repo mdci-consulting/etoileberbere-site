@@ -19,22 +19,14 @@
   }
 }
 
-.project-image-wrapper {
+.project-visual-wrapper {
   flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
-  .project-image-wrapper {
+  .project-visual-wrapper {
     width: 35%;
   }
-}
-
-.project-image {
-  width: 100%;
-  height: auto;
-  max-height: 280px;
-  object-fit: cover;
-  border-radius: 8px;
 }
 
 .project-content {

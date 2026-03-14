@@ -8,6 +8,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { ProjectsService } from "../data-access/projects.service";
 import { Project } from "../data-access/project.model";
 import { SeoService } from "../../shared/seo.service";
+import { TechVisualComponent } from "../../shared/components/tech-visual.component";
 
 @Component({
     selector: 'app-about',
@@ -18,6 +19,7 @@ import { SeoService } from "../../shared/seo.service";
         CommonModule,
         RouterModule,
         ToastModule,
+        TechVisualComponent,
     ],
     providers: [MessageService],
     animations: [

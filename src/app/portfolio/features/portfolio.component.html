@@ -7,12 +7,13 @@
   <div *ngFor="let project of projects; let i = index" class="card project-card" [class.selected]="i === selectedIndex">
 
     <div class="project-layout">
-      <!-- IMAGE -->
-      <div class="project-image-wrapper">
-        <img [src]="project.image"
-             [alt]="project.title"
-             class="project-image"
-             loading="lazy">
+      <!-- VISUAL -->
+      <div class="project-visual-wrapper">
+        <app-tech-visual
+          [technologies]="project.technologies"
+          [projectIndex]="i"
+          [label]="project.title">
+        </app-tech-visual>
       </div>
 
       <!-- CONTENU -->
