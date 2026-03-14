@@ -39,36 +39,57 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   background: transparent;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
 }
 
 /* === TYPOGRAPHIE === */
 h1, h2, h3, h4 {
   color: var(--text-heading);
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 0.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 0 0 1rem;
 }
 
-h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
-h3 { font-size: clamp(1.1rem, 2.5vw, 1.35rem); }
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); }
+h3 { font-size: clamp(1.15rem, 2.5vw, 1.5rem); }
 
 p {
   color: var(--text-secondary);
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
+  font-weight: 400;
 }
 
 strong {
   color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* === LISTES === */
+ul {
+  padding-left: 1.25rem;
+  margin: 0 0 1.25rem;
+}
+
+li {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+li::marker {
+  color: var(--accent);
 }
 
 /* === LIENS === */
 a {
   color: var(--accent);
   text-decoration: none;
+  font-weight: 500;
   transition: color 0.2s;
 }
 
@@ -79,13 +100,14 @@ a:hover {
 /* === INPUTS === */
 input, textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.1rem;
   border: 1px solid var(--border-subtle);
   background: var(--bg-card);
   color: var(--text-primary);
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
+  line-height: 1.5;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -97,38 +119,50 @@ input:focus, textarea:focus {
 
 input::placeholder, textarea::placeholder {
   color: var(--text-secondary);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 /* === LAYOUT === */
 .page-container {
   width: 100%;
   flex: 1;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   background: var(--bg-primary);
   backdrop-filter: blur(8px);
 }
 
 @media (min-width: 768px) {
   .page-container {
-    padding: 3rem 4rem;
+    padding: 3.5rem 4rem;
   }
 }
 
 @media (min-width: 1200px) {
   .page-container {
-    padding: 3rem 6rem;
+    padding: 4rem 6rem;
   }
 }
 
 /* === SECTION TITLE === */
 .section-title {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 800;
   color: var(--text-heading);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--accent);
+  margin-bottom: 2rem;
+  position: relative;
   display: inline-block;
+  padding-bottom: 0.6rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 /* === CARTES === */
@@ -138,7 +172,7 @@ input::placeholder, textarea::placeholder {
   border: 1px solid var(--border-subtle);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 1.75rem;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
@@ -154,21 +188,22 @@ input::placeholder, textarea::placeholder {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   background: var(--accent);
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
   box-shadow: 0 4px 15px var(--shadow-glow);
+  transform: translateY(-1px);
 }
 
 .btn-success {
@@ -182,7 +217,7 @@ input::placeholder, textarea::placeholder {
 /* === TAGS === */
 .tag {
   display: inline-block;
-  padding: 0.35rem 0.85rem;
+  padding: 0.4rem 0.9rem;
   background: rgba(6, 182, 212, 0.15);
   color: var(--accent);
   border: 1px solid rgba(6, 182, 212, 0.3);
