@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { startMatrixEffect } from '../assets/matrix-effect';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -14,14 +14,18 @@ import { PLATFORM_ID, Inject } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
+  private cleanupMatrix: (() => void) | null = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngAfterViewInit() {
-      if (isPlatformBrowser(this.platformId)) {
-         startMatrixEffect();
-      }
+    if (isPlatformBrowser(this.platformId)) {
+      this.cleanupMatrix = startMatrixEffect();
+    }
   }
 
+  ngOnDestroy() {
+    this.cleanupMatrix?.();
+  }
 }
