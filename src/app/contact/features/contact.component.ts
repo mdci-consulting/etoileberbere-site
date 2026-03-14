@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { SeoService } from '../../shared/seo.service';
 
 @Component({
     selector: 'app-contact',
@@ -16,13 +17,14 @@ import { MessageService } from 'primeng/api';
     imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputTextModule, ToastModule],
     providers: [MessageService]
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
     contactForm: FormGroup;
 
     constructor(
         private fb: FormBuilder,
         private http: HttpClient,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private seoService: SeoService
     ) {
         this.contactForm = this.fb.group({
             name: ['', Validators.required],
@@ -30,6 +32,13 @@ export class ContactComponent {
             email: ['', [Validators.required, Validators.email]],
             message: ['', Validators.required]
         });
+    }
+
+    ngOnInit() {
+        this.seoService.updateMeta(
+            'Contact - MDCI Consulting',
+            'Contactez Youssef Massaoudi, consultant Full Stack Java/Angular.'
+        );
     }
 
     sendMessage() {

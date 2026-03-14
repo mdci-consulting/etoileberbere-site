@@ -7,6 +7,7 @@ import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { ProjectsService } from "../../about/data-access/projects.service";
 import { Project } from "../../about/data-access/project.model";
+import { SeoService } from "../../shared/seo.service";
 
 @Component({
     selector: 'app-portfolio',
@@ -22,7 +23,8 @@ export class PortfolioComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        @Inject(PLATFORM_ID) private platformId: Object
+        @Inject(PLATFORM_ID) private platformId: Object,
+        private seoService: SeoService
     ) {}
 
     ngOnInit() {
@@ -35,6 +37,17 @@ export class PortfolioComponent implements OnInit {
                 const projectIndex = this.projects.findIndex(p => p.id === projectId);
                 if (projectIndex !== -1) {
                     this.selectedIndex = projectIndex;
+                    const project = this.projects[projectIndex];
+                    this.seoService.updateMeta(
+                        `${project.title} - Portfolio MDCI Consulting`,
+                        project.description,
+                        project.image
+                    );
+                } else {
+                    this.seoService.updateMeta(
+                        'Portfolio - MDCI Consulting',
+                        'Découvrez les projets réalisés par Youssef Massaoudi.'
+                    );
                 }
 
                 if (isPlatformBrowser(this.platformId)) {

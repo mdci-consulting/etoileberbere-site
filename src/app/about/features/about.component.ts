@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ProjectsService } from "../data-access/projects.service";
 import { Project } from "../data-access/project.model";
+import { SeoService } from "../../shared/seo.service";
 
 @Component({
     selector: 'app-about',
@@ -69,7 +70,8 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
         private router: Router,
         @Inject(PLATFORM_ID) private platformId: Object,
         private projectsService: ProjectsService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private seoService: SeoService
     ) {
         this.routerSubscription = this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
@@ -80,6 +82,10 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.seoService.updateMeta(
+            'MDCI Consulting - Youssef Massaoudi | Consultant Full Stack Java/Angular',
+            'Portfolio de Youssef Massaoudi, consultant Full Stack Java/Angular avec expertise en Spring Boot, DevOps et architectures modernes.'
+        );
         this.loadProjects();
     }
 
