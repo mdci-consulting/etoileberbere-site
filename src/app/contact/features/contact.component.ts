@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { SeoService } from '../../shared/seo.service';
@@ -14,7 +12,7 @@ import { SeoService } from '../../shared/seo.service';
     standalone: true,
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss'],
-    imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputTextModule, ToastModule],
+    imports: [CommonModule, ReactiveFormsModule, ToastModule],
     providers: [MessageService]
 })
 export class ContactComponent implements OnInit {

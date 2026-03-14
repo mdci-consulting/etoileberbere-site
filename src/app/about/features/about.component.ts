@@ -2,9 +2,6 @@ import { Component, ElementRef, Inject, OnDestroy, OnInit, AfterViewInit, PLATFO
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Subject, Subscription, interval, takeUntil, take, concatMap, delay, of, tap, repeat } from 'rxjs';
-import { ButtonModule } from 'primeng/button';
-import { CarouselModule } from 'primeng/carousel';
-import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -19,9 +16,6 @@ import { SeoService } from "../../shared/seo.service";
     styleUrls: ['./about.component.scss'],
     imports: [
         CommonModule,
-        CarouselModule,
-        ButtonModule,
-        TagModule,
         RouterModule,
         ToastModule,
     ],

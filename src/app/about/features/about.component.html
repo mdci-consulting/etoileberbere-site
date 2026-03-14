@@ -1,69 +1,71 @@
 <p-toast></p-toast>
-<div class="page-container about-container p-px-3 p-py-4">
+<div class="page-container">
 
-  <section #aboutSection id="about" [@fadeIn]>
-    <p aria-live="polite" class="p-text-secondary p-text-bold p-mb-4">&gt; <span class="terminal-text">{{ dynamicTitle }}<span class="blinking-cursor">|</span></span></p>
+  <!-- Hero -->
+  <section #aboutSection class="hero" [@fadeIn]>
+    <div class="hero-typewriter">
+      <span class="terminal-prompt">&gt;</span>
+      <span class="terminal-text">{{ dynamicTitle }}</span><span class="blinking-cursor">|</span>
+    </div>
+
+    <div class="hero-content">
+      <img src="assets/profile_2.jpg"
+           alt="Photo de profil de Youssef Massaoudi, consultant Full Stack Java/Angular"
+           class="profile-img">
+      <div class="hero-text">
+        <h1>Bienvenue !</h1>
+        <p class="profile-description">
+          Je suis <strong>Youssef Massaoudi</strong>, consultant Full Stack Java/Angular avec
+          <strong>{{ yearsOfExperience }} ans d'expérience</strong> {{ presentation }}
+        </p>
+        <button class="btn-primary" (click)="downloadCV()">
+          <i class="pi pi-download"></i>
+          Télécharger mon CV
+        </button>
+      </div>
+    </div>
   </section>
 
-  <!-- Section profil -->
-  <div class="p-d-flex p-flex-column p-md-flex-row p-ai-center p-jc-center p-mb-4 p-gap-4">
-    <img src="assets/profile_2.jpg"
-         alt="Photo de profil de Youssef Massaoudi, consultant Full Stack Java/Angular"
-         class="profile-img">
-    <div class="p-text-center p-md-text-left">
-      <h1 class="p-text-2xl">Bienvenue !</h1>
-      <p class="profile-description">
-        Je suis <strong>Youssef Massaoudi</strong>, consultant Full Stack Java/Angular avec
-        <strong>{{ yearsOfExperience }} ans d'expérience</strong> {{ presentation }}
-      </p>
-      <p-button
-        label="Télécharger mon CV"
-        icon="pi pi-download"
-        class="cv-button p-mt-2"
-        severity="info"
-        (click)="downloadCV()">
-      </p-button>
-    </div>
-  </div>
-
   <!-- Compétences -->
-  <h2 class="p-text-xl p-mb-2">Compétences</h2>
-  <div class="skills p-d-flex p-flex-wrap p-gap-2 p-mb-4" role="list" aria-label="Liste des compétences">
-    <p-tag *ngFor="let skill of skills" severity="info" role="listitem">{{ skill }}</p-tag>
-  </div>
+  <section class="section">
+    <h2 class="section-title">Compétences</h2>
+    <div class="tags-grid" role="list" aria-label="Liste des compétences">
+      <span *ngFor="let skill of skills" class="tag" role="listitem">{{ skill }}</span>
+    </div>
+  </section>
 
-  <!-- Portfolio Carousel -->
-  <h2 class="p-text-xl p-mb-2">Projets récents</h2>
-  <p-carousel
-    [value]="projects"
-    [numVisible]="1"
-    [numScroll]="1"
-    [circular]="true"
-    [autoplayInterval]="4000"
-    [responsiveOptions]="[{ breakpoint: '768px', numVisible: 1, numScroll: 1 }]"
-    styleClass="p-mb-4">
-
-    <ng-template #item let-project>
-      <div class="project-card p-p-3 p-shadow-2 border-round p-d-flex p-flex-column p-ai-start">
+  <!-- Projets -->
+  <section class="section">
+    <h2 class="section-title">Projets récents</h2>
+    <div class="projects-grid">
+      <div *ngFor="let project of projects" class="card project-card">
         <h3>{{ project.title }}</h3>
         <p>{{ project.description }}</p>
-        <a [routerLink]="['/portfolio', project.id]">
-          <p-button label="Voir le détail" icon="pi pi-external-link" severity="success"></p-button>
+        <a [routerLink]="['/portfolio', project.id]" class="btn-primary btn-success">
+          <i class="pi pi-external-link"></i>
+          Voir le détail
         </a>
       </div>
-    </ng-template>
-  </p-carousel>
+    </div>
+  </section>
 
-  <!-- Lien contact -->
-  <h2 class="p-text-xl p-mb-2">Me contacter</h2>
-  <div class="p-d-flex p-flex-column p-gap-2">
-    <a routerLink="/contact" class="p-text-primary d-block">Aller à la page Contact</a>
-    <a href="https://www.linkedin.com/in/youssef-massaoudi-90a2a990"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="d-block"
-       aria-label="Me contacter sur LinkedIn (ouvre un nouvel onglet)">
-      Me contacter sur LinkedIn
-    </a>
-  </div>
+  <!-- Contact -->
+  <section class="section">
+    <h2 class="section-title">Me contacter</h2>
+    <div class="contact-links">
+      <a routerLink="/contact" class="card contact-link">
+        <i class="pi pi-envelope"></i>
+        <span>Aller à la page Contact</span>
+      </a>
+      <a href="https://www.linkedin.com/in/youssef-massaoudi-90a2a990"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="card contact-link"
+         aria-label="Me contacter sur LinkedIn (ouvre un nouvel onglet)">
+        <i class="pi pi-linkedin"></i>
+        <span>Me contacter sur LinkedIn</span>
+      </a>
+    </div>
+  </section>
+
 </div>

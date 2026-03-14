@@ -1,10 +1,6 @@
 import { Component, OnInit, inject, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { CarouselModule } from 'primeng/carousel';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { TagModule } from 'primeng/tag';
 import { ProjectsService } from "../../about/data-access/projects.service";
 import { Project } from "../../about/data-access/project.model";
 import { SeoService } from "../../shared/seo.service";
@@ -14,7 +10,7 @@ import { SeoService } from "../../shared/seo.service";
     standalone: true,
     templateUrl: './portfolio.component.html',
     styleUrls: ['./portfolio.component.scss'],
-    imports: [CommonModule, CarouselModule, ButtonModule, CardModule, TagModule]
+    imports: [CommonModule]
 })
 export class PortfolioComponent implements OnInit {
     private readonly projectsService = inject(ProjectsService);

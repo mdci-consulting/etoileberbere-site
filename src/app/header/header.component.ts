@@ -1,38 +1,34 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenubarModule } from 'primeng/menubar';
-import { ButtonModule } from 'primeng/button';
+import { RouterModule } from '@angular/router';
 import { ThemeService } from '../shared/theme.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, MenubarModule, ButtonModule],
+  imports: [CommonModule, RouterModule],
   styleUrls: ['./header.component.scss'],
   template: `
-   <header class="custom-header">
-     <p-menubar [model]="items" class="custom-menubar">
-       <ng-template pTemplate="end">
-         <button
-           pButton
-           [icon]="themeService.isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'"
-           (click)="toggleTheme()"
-           class="theme-toggle-btn"
-           [attr.aria-label]="themeService.isDarkMode() ? 'Passer en mode clair' : 'Passer en mode sombre'"
-           type="button"
-         ></button>
-       </ng-template>
-     </p-menubar>
-   </header>
+    <header class="site-header">
+      <div class="header-inner">
+        <a routerLink="/" class="logo">MDCI<span class="logo-accent">.</span>Consulting</a>
+        <nav>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Accueil</a>
+          <a routerLink="/portfolio/1" routerLinkActive="active" class="nav-link">Projets</a>
+          <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+          <button
+            class="theme-btn"
+            (click)="toggleTheme()"
+            [attr.aria-label]="themeService.isDarkMode() ? 'Passer en mode clair' : 'Passer en mode sombre'"
+            type="button">
+            <i [class]="themeService.isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
   `
 })
 export class HeaderComponent {
-  items = [
-    { label: 'Accueil', routerLink: '/' },
-    { label: 'Projets', routerLink: ['/portfolio', 1] },
-    { label: 'Contact', routerLink: '/contact' }
-  ];
-
   constructor(public themeService: ThemeService) {}
 
   toggleTheme() {

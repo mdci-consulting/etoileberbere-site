@@ -1,71 +1,70 @@
 <p-toast></p-toast>
-<div class="page-container contact-container p-px-3 p-py-4">
+<div class="page-container">
 
-  <div class="p-grid p-justify-center">
-    <div class="p-col-12 p-md-10 p-lg-8">
+  <h2 class="section-title">Contactez-moi</h2>
+  <p class="contact-intro">N'hesitez pas a m'ecrire, je reponds rapidement !</p>
 
-      <h2 class="p-text-2xl p-mb-4">Contactez-moi</h2>
+  <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="contact-form" aria-label="Formulaire de contact">
 
-      <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="p-fluid" aria-label="Formulaire de contact">
+    <div class="form-row">
+      <!-- Nom -->
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input id="name" type="text" formControlName="name" placeholder="Votre nom"
+               aria-required="true"
+               [attr.aria-invalid]="f['name'].touched && f['name'].invalid"
+               aria-describedby="name-error" />
+        <small *ngIf="f['name'].touched && f['name'].errors?.['required']" id="name-error" class="form-error">
+          Le nom est requis.
+        </small>
+      </div>
 
-        <!-- Nom -->
-        <div class="p-field p-mb-3">
-          <label for="name">Nom :</label>
-          <input id="name" pInputText type="text" formControlName="name" placeholder="Votre nom"
-                 aria-required="true"
-                 [attr.aria-invalid]="f['name'].touched && f['name'].invalid"
-                 aria-describedby="name-error" />
-          <div *ngIf="f['name'].touched && f['name'].errors?.['required']" class="p-error">
-            <small id="name-error">Le nom est requis.</small>
-          </div>
-        </div>
-
-        <!-- Email -->
-        <div class="p-field p-mb-3">
-          <label for="email">Email :</label>
-          <input id="email" pInputText type="email" formControlName="email" placeholder="Votre email"
-                 aria-required="true"
-                 [attr.aria-invalid]="f['email'].touched && f['email'].invalid"
-                 aria-describedby="email-error" />
-          <div *ngIf="f['email'].touched && f['email'].invalid" class="p-error">
-            <small id="email-error">
-              <span *ngIf="f['email'].errors?.['required']">L'email est requis.</span>
-              <span *ngIf="f['email'].errors?.['email']">Veuillez entrer un email valide.</span>
-            </small>
-          </div>
-        </div>
-
-        <!-- Sujet -->
-        <div class="p-field p-mb-3">
-          <label for="subject">Sujet :</label>
-          <input id="subject" pInputText type="text" formControlName="subject" placeholder="Votre sujet"
-                 aria-required="true"
-                 [attr.aria-invalid]="f['subject'].touched && f['subject'].invalid"
-                 aria-describedby="subject-error" />
-          <div *ngIf="f['subject'].touched && f['subject'].errors?.['required']" class="p-error">
-            <small id="subject-error">Le sujet est requis.</small>
-          </div>
-        </div>
-
-        <!-- Message -->
-        <div class="p-field p-mb-3">
-          <label for="message">Message :</label>
-          <textarea id="message" pInputTextarea formControlName="message" placeholder="Votre message" rows="5"
-                    aria-required="true"
-                    [attr.aria-invalid]="f['message'].touched && f['message'].invalid"
-                    aria-describedby="message-error"></textarea>
-          <div *ngIf="f['message'].touched && f['message'].errors?.['required']" class="p-error">
-            <small id="message-error">Le message est requis.</small>
-          </div>
-        </div>
-
-        <!-- Bouton d'envoi -->
-        <div class="p-d-flex p-jc-end">
-          <button pButton type="submit" label="Envoyer" [disabled]="contactForm.invalid"></button>
-        </div>
-
-      </form>
-
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="Votre email"
+               aria-required="true"
+               [attr.aria-invalid]="f['email'].touched && f['email'].invalid"
+               aria-describedby="email-error" />
+        <small *ngIf="f['email'].touched && f['email'].errors?.['required']" id="email-error" class="form-error">
+          L'email est requis.
+        </small>
+        <small *ngIf="f['email'].touched && f['email'].errors?.['email']" class="form-error">
+          Veuillez entrer un email valide.
+        </small>
+      </div>
     </div>
-  </div>
+
+    <!-- Sujet -->
+    <div class="form-group">
+      <label for="subject">Sujet</label>
+      <input id="subject" type="text" formControlName="subject" placeholder="Votre sujet"
+             aria-required="true"
+             [attr.aria-invalid]="f['subject'].touched && f['subject'].invalid"
+             aria-describedby="subject-error" />
+      <small *ngIf="f['subject'].touched && f['subject'].errors?.['required']" id="subject-error" class="form-error">
+        Le sujet est requis.
+      </small>
+    </div>
+
+    <!-- Message -->
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" formControlName="message" placeholder="Votre message" rows="6"
+                aria-required="true"
+                [attr.aria-invalid]="f['message'].touched && f['message'].invalid"
+                aria-describedby="message-error"></textarea>
+      <small *ngIf="f['message'].touched && f['message'].errors?.['required']" id="message-error" class="form-error">
+        Le message est requis.
+      </small>
+    </div>
+
+    <!-- Bouton -->
+    <button type="submit" class="btn-primary" [disabled]="contactForm.invalid">
+      <i class="pi pi-send"></i>
+      Envoyer
+    </button>
+
+  </form>
+
 </div>

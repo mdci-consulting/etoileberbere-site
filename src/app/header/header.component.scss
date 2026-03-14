@@ -1,21 +1,86 @@
-.custom-header {
-  width: 100%;
-  background-color: var(--surface-ground);
-  padding: 0.5rem 1rem;
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-:host ::ng-deep .custom-menubar {
-  justify-content: space-between;
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+}
 
-  .p-menubar-end {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  text-decoration: none;
+
+  .logo-accent {
+    color: var(--accent);
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  padding: 0.5rem 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+
+  &:hover, &.active {
+    color: var(--text-heading);
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+
+  &:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .header-inner {
+    padding: 0.75rem 1rem;
   }
 
-  .theme-toggle-btn {
-    margin-left: 1rem;
-    border-radius: 50%;
+  .nav-link {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .logo {
+    font-size: 0.95rem;
   }
 }

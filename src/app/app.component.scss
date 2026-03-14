@@ -1,27 +1,28 @@
 :host {
-  display: block;
-  scroll-behavior: smooth;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 .skip-link {
   position: absolute;
   top: -100%;
   left: 0;
-  background: #00FF9F;
-  color: #000;
+  background: var(--accent);
+  color: #fff;
   padding: 0.5rem 1rem;
   z-index: 1000;
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
+  border-radius: 0 0 8px 0;
 
   &:focus {
     top: 0;
   }
-}
-
-form .field {
-  margin-bottom: 1rem;
 }
 
 #matrix-canvas {
@@ -29,12 +30,10 @@ form .field {
   top: 0;
   left: 0;
   width: 100vw !important;
-  height: auto !important;
-  min-height: 100vh !important;
+  height: 100vh !important;
   background: transparent !important;
   z-index: -10;
-  opacity: 0.4;
-  filter: blur(1px);
+  opacity: 0.15;
   pointer-events: none;
 }
 

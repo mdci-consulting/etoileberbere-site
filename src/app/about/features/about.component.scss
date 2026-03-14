@@ -1,20 +1,26 @@
+/* === HERO === */
+.hero {
+  margin-bottom: 3rem;
+}
+
+.hero-typewriter {
+  margin-bottom: 2rem;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
 .terminal-text {
-  font-size: 30px;
-  font-style: italic;
-  font-weight: bold;
-  color: #00FF9F;
-  text-shadow: 0 0 10px rgba(0, 255, 159, 0.8);
-  animation: flicker 1.5s infinite alternate;
+  color: var(--accent-terminal);
 }
 
 .blinking-cursor {
+  color: var(--accent-terminal);
   animation: blink 1s step-end infinite;
-}
-
-@keyframes flicker {
-  0% { opacity: 1; }
-  50% { opacity: 0.8; }
-  100% { opacity: 1; }
 }
 
 @keyframes blink {
@@ -22,24 +28,102 @@
   50% { opacity: 0; }
 }
 
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
 .profile-img {
-  width: 150px;
-  max-width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--border-subtle);
+  flex-shrink: 0;
 }
 
-.skills {
+.hero-text {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-text {
+    text-align: left;
+  }
+}
+
+.profile-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* === SECTIONS === */
+.section {
+  margin-bottom: 3rem;
+}
+
+/* === TAGS === */
+.tags-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  gap: 0.5rem;
 }
 
-a.d-block {
-  display: block;
-  padding: 5px;
+/* === PROJETS === */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* === CONTACT LINKS === */
+.contact-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--text-primary);
+
+  i {
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
 }

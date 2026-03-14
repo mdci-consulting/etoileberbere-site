@@ -5,9 +5,20 @@ import { CommonModule } from '@angular/common';
   selector: 'app-footer',
   standalone: true,
   imports: [CommonModule],
+  styles: [`
+    .site-footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: auto;
+    }
+    .footer-accent { color: var(--accent); }
+  `],
   template: `
-    <footer class="text-center p-3 mt-4 bg-gray-200" role="contentinfo">
-     © {{ currentYear }} - Youssef Massaoudi | Full Stack Consultant Java / Angular
+    <footer class="site-footer" role="contentinfo">
+      <span class="footer-accent">&copy;</span> {{ currentYear }} - Youssef Massaoudi | Full Stack Consultant Java / Angular
     </footer>
   `
 })

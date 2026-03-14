@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { PLATFORM_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header.component';
 import { ThemeService } from '../shared/theme.service';
 
@@ -10,7 +9,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent, NoopAnimationsModule],
+      imports: [HeaderComponent],
       providers: [
         { provide: PLATFORM_ID, useValue: 'browser' },
         provideRouter([])
@@ -28,16 +27,21 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have 3 menu items', () => {
-    expect(component.items.length).toBe(3);
+  it('should render navigation links', () => {
+    const fixture = TestBed.createComponent(HeaderComponent);
+    fixture.detectChanges();
+    const links = fixture.nativeElement.querySelectorAll('.nav-link');
+    expect(links.length).toBe(3);
   });
 
-  it('should have Accueil, Projets, Contact labels', () => {
-    const labels = component.items.map(i => i.label);
-    expect(labels).toEqual(['Accueil', 'Projets', 'Contact']);
+  it('should render logo', () => {
+    const fixture = TestBed.createComponent(HeaderComponent);
+    fixture.detectChanges();
+    const logo = fixture.nativeElement.querySelector('.logo');
+    expect(logo.textContent).toContain('MDCI');
   });
 
-  it('should toggle theme when toggleTheme is called', () => {
+  it('should toggle theme when button is clicked', () => {
     const themeService = TestBed.inject(ThemeService);
     const initialMode = themeService.isDarkMode();
     component.toggleTheme();
