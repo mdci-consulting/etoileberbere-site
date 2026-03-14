@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "cp dist/etoileberbere-site/browser/index.html dist/etoileberbere-site/browser/404.html",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:etoileberbere-site": "node dist/etoileberbere-site/server/server.mjs"
