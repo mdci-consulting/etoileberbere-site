@@ -47,9 +47,10 @@ export class PortfolioComponent implements OnInit {
                     );
                 }
 
-                if (isPlatformBrowser(this.platformId)) {
+                if (isPlatformBrowser(this.platformId) && projectIndex !== -1) {
                     setTimeout(() => {
-                        window.scrollTo({ top: 300, behavior: 'smooth' });
+                        const el = document.getElementById('project-' + projectId);
+                        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }, 300);
                 }
             });

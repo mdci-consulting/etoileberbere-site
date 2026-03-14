@@ -4,7 +4,7 @@
 
   <p *ngIf="projects.length === 0" class="empty-state" role="alert">Aucun projet trouvé</p>
 
-  <div *ngFor="let project of projects; let i = index" class="card project-card" [class.selected]="i === selectedIndex">
+  <div *ngFor="let project of projects; let i = index" [id]="'project-' + project.id" class="card project-card" [class.selected]="i === selectedIndex">
 
     <div class="project-layout">
       <!-- VISUAL -->
